@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Khloud & Mohamed</title>
+
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:#eafbf7;
+  color:#174b55;
+  font-family:Arial,sans-serif;
+  text-align:center
+}
+section{
+  min-height:100vh;
+  position:relative;
+  overflow:hidden;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  padding:40px 22px
+}
+
+/* OPENING */
+.hero{
+  background:linear-gradient(#8edbd9,#3f9faa,#155c69);
+  color:white
+}
+.stars{
+  position:absolute;
+  inset:0;
+  background-image:
+  radial-gradient(white 1px,transparent 1px),
+  radial-gradient(white 1px,transparent 1px);
+  background-size:80px 80px,130px 130px;
+  opacity:.45
+}
+.moon{
+  position:absolute;
+  right:12%;
+  top:10%;
+  width:65px;
+  height:65px;
+  border-radius:50%;
+  background:#fffbe3;
+  box-shadow:0 0 35px #fff8
+}
+.sea{
+  position:absolute;
+  bottom:-20px;
+  left:-10%;
+  width:120%;
+  height:38%;
+  background:
+    repeating-linear-gradient(
+      -8deg,
+      rgba(255,255,255,.22) 0 4px,
+      transparent 4px 25px
+    );
+  border-radius:50% 50% 0 0;
+  animation:waves 5s ease-in-out infinite
+}
+@keyframes waves{
+  0%,100%{transform:translateX(-2%)}
+  50%{transform:translateX(2%) translateY(-12px)}
+}
+
+.envelope{
+  width:280px;
+  height:180px;
+  background:#a8e5dc;
+  position:relative;
+  border-radius:7px;
+  box-shadow:0 25px 50px #00343b55;
+  cursor:pointer;
+  z-index:3;
+  transition:1s
+}
+.envelope:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:#d8fff7;
+  clip-path:polygon(0 0,50% 55%,100% 0);
+  transform-origin:top;
+  transition:1s;
+  z-index:4
+}
+.envelope.open:before{
+  transform:rotateX(180deg)
+}
+.letter{
+  position:absolute;
+  left:12%;
+  top:12px;
+  width:76%;
+  height:145px;
+  background:#fffdf6;
+  color:#237782;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  z-index:2
+}
+.letter b{
+  font-family:Georgia,serif;
+  font-size:42px
+}
+.seal{
+  position:absolute;
+  z-index:6;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  width:45px;
+  height:45px;
+  border-radius:50%;
+  background:#237782;
+  color:white;
+  display:grid;
+  place-items:center
+}
+.open-text{
+  margin-top:25px;
+  font-size:10px;
+  letter-spacing:4px
+}
+.hero-content{
+  position:absolute;
+  opacity:0;
+  transform:translateY(30px);
+  transition:1s;
+  z-index:2
+}
+.hero-content.show{
+  opacity:1;
+  transform:none
+}
+.hero h1{
+  font-family:Georgia,serif;
+  font-size:clamp(55px,13vw,105px);
+  font-weight:400;
+  margin:10px
+}
+.hero h1 i{font-size:.6em}
+.eyebrow{
+  font-size:10px;
+  letter-spacing:4px
+}
+
+/* DETAILS */
+.details{
+  background:#f8fffc
+}
+h2{
+  font-family:Georgia,serif;
+  font-size:clamp(45px,10vw,80px);
+  font-weight:400;
+  line-height:.95;
+  margin:15px
+}
+h2 em{color:#237782}
+p{
+  max-width:550px;
+  line-height:1.8
+}
+.info{
+  width:min(850px,100%);
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  margin-top:45px;
+  border-top:1px solid #23778255;
+  border-bottom:1px solid #23778255
+}
+.info div{
+  padding:25px 10px;
+  border-right:1px solid #23778233
+}
+.info div:last-child{border:0}
+.info span{
+  display:block;
+  font-size:9px;
+  letter-spacing:3px
+}
+.info strong{
+  display:block;
+  margin-top:10px;
+  font-family:Georgia,serif;
+  font-size:23px
+}
+
+/* COUNTDOWN */
+.count{
+  background:#237782;
+  color:white
+}
+.timer{
+  display:flex;
+  gap:30px;
+  margin-top:30px
+}
+.timer b{
+  display:block;
+  font-family:Georgia,serif;
+  font-size:55px
+}
+.timer small{
+  font-size:8px;
+  letter-spacing:2px
+}
+
+/* DRESS */
+.dress{
+  background:#eafbf7
+}
+.colors{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  width:min(650px,100%);
+  gap:12px;
+  margin-top:35px
+}
+.color{
+  height:85px;
+  display:flex;
+  align-items:end;
+  justify-content:center;
+  padding-bottom:10px;
+  font-size:8px;
+  letter-spacing:2px
+}
+.c1{background:#D1FFF2}
+.c2{background:#B2FFE6}
+.c3{background:#8DE0D5}
+.c4{background:#67CFC3}
+.c5{background:#46A3A9;color:white}
+.c6{background:#237782;color:white}
+
+/* VENUE */
+.venue{
+  background:linear-gradient(#eefdfa,#c8eee8)
+}
+.button{
+  margin-top:20px;
+  padding:15px 25px;
+  background:#237782;
+  color:white;
+  text-decoration:none;
+  font-size:9px;
+  letter-spacing:2px
+}
+
+/* END */
+.end{
+  color:white;
+  background:linear-gradient(#071c2a,#0d5360)
+}
+.end .sea{opacity:.5}
+.end h2{font-size:clamp(65px,14vw,120px)}
+@media(max-width:600px){
+  .info{grid-template-columns:1fr}
+  .info div{border-right:0;border-bottom:1px solid #23778233}
+  .colors{grid-template-columns:1fr 1fr}
+  .timer{gap:15px}
+  .timer b{font-size:42px}
+}
+</style>
+</head>
+
+<body>
+
+<section class="hero">
+
+<div class="stars"></div>
+<div class="moon"></div>
+<div class="sea"></div>
+
+<div id="envelope" class="envelope" onclick="openInvitation()">
+  <div class="letter">
+    <small>YOU ARE INVITED</small>
+    <b>K & M</b>
+    <small>14 · 10 · 2026</small>
+  </div>
+  <div class="seal">K</div>
+</div>
+
+<div id="openText" class="open-text">
+  TAP TO OPEN
+</div>
+
+<div id="heroContent" class="hero-content">
+  <div class="eyebrow">YOU ARE INVITED TO OUR WEDDING</div>
+  <h1>Khloud <i>&</i> Mohamed</h1>
+  <p>A day by the sea, a lifetime together.</p>
+</div>
+
+</section>
+
+
+<section class="details">
+
+<div class="eyebrow">THE DAY</div>
+
+<h2>
+Two hearts.<br>
+<em>One beautiful beginning.</em>
+</h2>
+
+<p>
+We would love to have you with us as we celebrate
+the beginning of our forever.
+</p>
+
+<div class="info">
+
+<div>
+<span>DATE</span>
+<strong>14 OCTOBER 2026</strong>
+</div>
+
+<div>
+<span>TIME</span>
+<strong>5:00 PM</strong>
+</div>
+
+<div>
+<span>VENUE</span>
+<strong>STEIGENBERGER</strong>
+</div>
+
+</div>
+
+</section>
+
+
+<section class="count">
+
+<div class="eyebrow">COUNTING DOWN TO FOREVER</div>
+
+<div class="timer">
+
+<div>
+<b id="days">00</b>
+<small>DAYS</small>
+</div>
+
+<div>
+<b id="hours">00</b>
+<small>HOURS</small>
+</div>
+
+<div>
+<b id="minutes">00</b>
+<small>MINUTES</small>
+</div>
+
+<div>
+<b id="seconds">00</b>
+<small>SECONDS</small>
+</div>
+
+</div>
+
+</section>
+
+
+<section class="dress">
+
+<div class="eyebrow">DRESS CODE</div>
+
+<h2>
+Our shades<br>
+<em>of the sea.</em>
+</h2>
+
+<p>
+Ladies are invited to wear any of our ocean-inspired shades.
+Gentlemen: white & baby blue.
+</p>
+
+<div class="colors">
+
+<div class="color c1">SEA FOAM</div>
+<div class="color c2">LAGOON</div>
+<div class="color c3">REEF WATER</div>
+<div class="color c4">TIDAL POOL</div>
+<div class="color c5">DEEP CURRENT</div>
+<div class="color c6">OCEAN FLOOR</div>
+
+</div>
+
+<p><b>GENTLEMEN</b><br>WHITE + BABY BLUE</p>
+
+</section>
+
+
+<section class="venue">
+
+<div class="eyebrow">THE PLACE</div>
+
+<h2>
+Meet us<br>
+<em>by the sea.</em>
+</h2>
+
+<h3>STEIGENBERGER</h3>
+
+<p>
+14 October 2026 · 5:00 PM
+</p>
+
+<a class="button"
+href="https://www.google.com/maps/search/?api=1&query=Steigenberger%20Sidi%20Abdel%20Rahman"
+target="_blank">
+OPEN LOCATION
+</a>
+
+</section>
+
+
+<section class="end">
+
+<div class="stars"></div>
+<div class="moon"></div>
+<div class="sea"></div>
+
+<div style="z-index:2">
+
+<div class="eyebrow">UNTIL THEN…</div>
+
+<h2>
+See you<br>
+<em>by the sea.</em>
+</h2>
+
+<p>Khloud & Mohamed</p>
+
+<p>14 · 10 · 2026</p>
+
+</div>
+
+</section>
+
+
+<script>
+
+function openInvitation(){
+
+document.getElementById("envelope")
+.classList.add("open");
+
+document.getElementById("openText")
+.style.display="none";
+
+setTimeout(function(){
+
+document.getElementById("heroContent")
+.classList.add("show");
+
+},700);
+
+}
+
+
+const weddingDate =
+new Date("2026-10-14T17:00:00+03:00").getTime();
+
+function countdown(){
+
+let now=new Date().getTime();
+let distance=weddingDate-now;
+
+if(distance<0) distance=0;
+
+let days=Math.floor(distance/(1000*60*60*24));
+
+let hours=Math.floor(
+(distance%(1000*60*60*24))/(1000*60*60)
+);
+
+let minutes=Math.floor(
+(distance%(1000*60*60))/(1000*60)
+);
+
+let seconds=Math.floor(
+(distance%(1000*60))/1000
+);
+
+document.getElementById("days").innerHTML=
+String(days).padStart(2,"0");
+
+document.getElementById("hours").innerHTML=
+String(hours).padStart(2,"0");
+
+document.getElementById("minutes").innerHTML=
+String(minutes).padStart(2,"0");
+
+document.getElementById("seconds").innerHTML=
+String(seconds).padStart(2,"0");
+
+}
+
+countdown();
+setInterval(countdown,1000);
+
+</script>
+
+</body>
+</html>
