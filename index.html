@@ -2,513 +2,422 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Khloud & Mohamed</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Khloud & Mohamed | Wedding</title>
 
 <style>
-*{box-sizing:border-box}
+*{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{
-  margin:0;
-  background:#eafbf7;
-  color:#174b55;
-  font-family:Arial,sans-serif;
-  text-align:center
+font-family:Georgia,'Times New Roman',serif;
+background:#062b35;color:#fff;overflow-x:hidden
 }
 section{
-  min-height:100vh;
-  position:relative;
-  overflow:hidden;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  flex-direction:column;
-  padding:40px 22px
-}
-
-/* OPENING */
-.hero{
-  background:linear-gradient(#8edbd9,#3f9faa,#155c69);
-  color:white
-}
-.stars{
-  position:absolute;
-  inset:0;
-  background-image:
-  radial-gradient(white 1px,transparent 1px),
-  radial-gradient(white 1px,transparent 1px);
-  background-size:80px 80px,130px 130px;
-  opacity:.45
-}
-.moon{
-  position:absolute;
-  right:12%;
-  top:10%;
-  width:65px;
-  height:65px;
-  border-radius:50%;
-  background:#fffbe3;
-  box-shadow:0 0 35px #fff8
+min-height:100vh;position:relative;overflow:hidden;
+display:flex;align-items:center;justify-content:center;
 }
 .sea{
-  position:absolute;
-  bottom:-20px;
-  left:-10%;
-  width:120%;
-  height:38%;
-  background:
-    repeating-linear-gradient(
-      -8deg,
-      rgba(255,255,255,.22) 0 4px,
-      transparent 4px 25px
-    );
-  border-radius:50% 50% 0 0;
-  animation:waves 5s ease-in-out infinite
+position:absolute;inset:0;
+background:
+radial-gradient(circle at 50% 8%,rgba(255,255,255,.3),transparent 16%),
+linear-gradient(180deg,#d1fff2 0%,#8de0d5 28%,#46a3a9 55%,#237782 78%,#062b35 100%);
 }
-@keyframes waves{
-  0%,100%{transform:translateX(-2%)}
-  50%{transform:translateX(2%) translateY(-12px)}
+.wave{
+position:absolute;left:-20%;bottom:-90px;width:140%;height:220px;
+background:rgba(255,255,255,.14);border-radius:50%;
+animation:w 8s ease-in-out infinite alternate;
 }
+.wave:nth-child(2){bottom:-140px;animation-duration:11s;opacity:.65}
+.wave:nth-child(3){bottom:-190px;animation-duration:14s;opacity:.4}
+@keyframes w{to{transform:translateX(5%) rotate(2deg)}}
 
+.stars i{
+position:absolute;width:4px;height:4px;background:white;
+border-radius:50%;box-shadow:0 0 12px white;
+animation:s 2s infinite alternate
+}
+@keyframes s{to{opacity:.25;transform:scale(.5)}}
+
+.shell{
+position:absolute;font-size:45px;z-index:2;
+animation:f 5s ease-in-out infinite
+}
+.sh1{left:7%;bottom:8%}.sh2{right:8%;top:13%;font-size:32px}
+.sh3{right:12%;bottom:14%;font-size:27px}
+@keyframes f{50%{transform:translateY(-15px) rotate(7deg)}}
+
+.content{position:relative;z-index:5;text-align:center;padding:25px}
+.kicker{font:11px Arial;letter-spacing:5px;margin-bottom:30px}
+h1,h2,h3{font-weight:400}
+h1{font-size:clamp(65px,15vw,135px);line-height:.75}
+.amp{font-size:.65em}
+.script{font-size:25px;line-height:1.5;margin-top:35px}
+
+/* ENVELOPE */
 .envelope{
-  width:280px;
-  height:180px;
-  background:#a8e5dc;
-  position:relative;
-  border-radius:7px;
-  box-shadow:0 25px 50px #00343b55;
-  cursor:pointer;
-  z-index:3;
-  transition:1s
+width:300px;height:205px;margin:auto;position:relative;
+cursor:pointer;filter:drop-shadow(0 20px 25px rgba(0,0,0,.3));
+transition:1s
 }
-.envelope:before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:#d8fff7;
-  clip-path:polygon(0 0,50% 55%,100% 0);
-  transform-origin:top;
-  transition:1s;
-  z-index:4
+.env{
+position:absolute;inset:0;border-radius:8px;
+background:#f4fffc;box-shadow:inset 0 0 0 2px #b2e8df
 }
-.envelope.open:before{
-  transform:rotateX(180deg)
+.left,.right{
+position:absolute;bottom:0;width:0;height:0;z-index:3
 }
-.letter{
-  position:absolute;
-  left:12%;
-  top:12px;
-  width:76%;
-  height:145px;
-  background:#fffdf6;
-  color:#237782;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  flex-direction:column;
-  z-index:2
-}
-.letter b{
-  font-family:Georgia,serif;
-  font-size:42px
+.left{border-top:103px solid #c5e8e1;border-right:150px solid transparent}
+.right{right:0;border-top:103px solid #b9ddd7;border-left:150px solid transparent}
+.flap{
+position:absolute;top:0;left:0;width:0;height:0;z-index:5;
+border-left:150px solid transparent;border-right:150px solid transparent;
+border-top:110px solid #eafff9;transform-origin:top;transition:1s
 }
 .seal{
-  position:absolute;
-  z-index:6;
-  left:50%;
-  top:50%;
-  transform:translate(-50%,-50%);
-  width:45px;
-  height:45px;
-  border-radius:50%;
-  background:#237782;
-  color:white;
-  display:grid;
-  place-items:center
+position:absolute;z-index:7;left:50%;top:50%;
+transform:translate(-50%,-50%);width:60px;height:60px;
+border-radius:50%;background:#237782;border:4px solid #b2ffe6;
+display:grid;place-items:center;font-size:17px
 }
-.open-text{
-  margin-top:25px;
-  font-size:10px;
-  letter-spacing:4px
+.open .flap{transform:rotateX(180deg)}
+.open{transform:scale(.8);opacity:0}
+
+/* HERO */
+.moon{
+position:absolute;right:12%;top:9%;width:90px;height:90px;
+border-radius:50%;background:#fff8d8;box-shadow:0 0 45px #fff5b0
 }
-.hero-content{
-  position:absolute;
-  opacity:0;
-  transform:translateY(30px);
-  transition:1s;
-  z-index:2
-}
-.hero-content.show{
-  opacity:1;
-  transform:none
-}
-.hero h1{
-  font-family:Georgia,serif;
-  font-size:clamp(55px,13vw,105px);
-  font-weight:400;
-  margin:10px
-}
-.hero h1 i{font-size:.6em}
-.eyebrow{
-  font-size:10px;
-  letter-spacing:4px
-}
+.hero .content{max-width:900px}
+.invite{font:11px Arial;letter-spacing:7px}
+.hero h1{margin:30px 0}
 
 /* DETAILS */
 .details{
-  background:#f8fffc
+background:linear-gradient(180deg,#67cfc3,#237782,#062b35);
+text-align:center
 }
-h2{
-  font-family:Georgia,serif;
-  font-size:clamp(45px,10vw,80px);
-  font-weight:400;
-  line-height:.95;
-  margin:15px
+.details .content{width:min(900px,92%)}
+.title{font-size:65px;margin-bottom:40px}
+.cards{
+display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:55px
 }
-h2 em{color:#237782}
-p{
-  max-width:550px;
-  line-height:1.8
+.card{
+padding:30px 15px;background:rgba(255,255,255,.09);
+border:1px solid rgba(255,255,255,.3);backdrop-filter:blur(7px)
 }
-.info{
-  width:min(850px,100%);
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  margin-top:45px;
-  border-top:1px solid #23778255;
-  border-bottom:1px solid #23778255
-}
-.info div{
-  padding:25px 10px;
-  border-right:1px solid #23778233
-}
-.info div:last-child{border:0}
-.info span{
-  display:block;
-  font-size:9px;
-  letter-spacing:3px
-}
-.info strong{
-  display:block;
-  margin-top:10px;
-  font-family:Georgia,serif;
-  font-size:23px
-}
+.card small{display:block;font:10px Arial;letter-spacing:3px;margin-bottom:15px}
+.card strong{font-size:26px;font-weight:400}
+.count{display:flex;justify-content:center;gap:35px;flex-wrap:wrap}
+.count b{display:block;font-size:48px;font-weight:400}
+.count small{font:9px Arial;letter-spacing:2px}
 
-/* COUNTDOWN */
-.count{
-  background:#237782;
-  color:white
+/* MEMORIES */
+.memories{
+background:#eefbf7;color:#164c55;display:block;padding:100px 6%
 }
-.timer{
-  display:flex;
-  gap:30px;
-  margin-top:30px
+.memories .title{text-align:center}
+.memories p{text-align:center;font-size:21px;margin-top:-25px;margin-bottom:45px}
+.gallery{
+max-width:1050px;margin:auto;display:grid;
+grid-template-columns:repeat(3,1fr);gap:18px
 }
-.timer b{
-  display:block;
-  font-family:Georgia,serif;
-  font-size:55px
+.photo{
+aspect-ratio:4/5;border-radius:6px;overflow:hidden;
+background:linear-gradient(145deg,#d1fff2,#67cfc3);
+display:flex;align-items:center;justify-content:center;
+font-size:25px;color:#237782;position:relative
 }
-.timer small{
-  font-size:8px;
-  letter-spacing:2px
-}
+.photo span{font-size:13px;letter-spacing:2px}
+.photo:nth-child(2){aspect-ratio:1/1}
+.photo:nth-child(5){aspect-ratio:1/1}
+.photo:nth-child(8){aspect-ratio:1/1}
 
 /* DRESS */
 .dress{
-  background:#eafbf7
+background:linear-gradient(180deg,#d1fff2,#67cfc3,#237782);
+display:block;padding:100px 6%
 }
-.colors{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  width:min(650px,100%);
-  gap:12px;
-  margin-top:35px
+.dress .title{text-align:center}
+.dress-sub{text-align:center;font-size:22px;margin-top:-25px;margin-bottom:50px}
+.dress-grid{
+max-width:850px;margin:auto;display:grid;
+grid-template-columns:1fr 1fr;gap:30px
 }
-.color{
-  height:85px;
-  display:flex;
-  align-items:end;
-  justify-content:center;
-  padding-bottom:10px;
-  font-size:8px;
-  letter-spacing:2px
+.box{
+padding:35px;background:rgba(255,255,255,.18);
+border:1px solid rgba(255,255,255,.5);backdrop-filter:blur(8px)
 }
-.c1{background:#D1FFF2}
-.c2{background:#B2FFE6}
-.c3{background:#8DE0D5}
-.c4{background:#67CFC3}
-.c5{background:#46A3A9;color:white}
-.c6{background:#237782;color:white}
+.box h3{text-align:center;font-size:35px;margin-bottom:25px}
+.color{display:flex;align-items:center;gap:14px;margin:14px 0;font:11px Arial;letter-spacing:1px}
+.circle{width:31px;height:31px;border-radius:50%;border:1px solid rgba(0,0,0,.12)}
+.c1{background:#D1FFF2}.c2{background:#B2FFE6}.c3{background:#8DE0D5}
+.c4{background:#67CFC3}.c5{background:#46A3A9}.c6{background:#237782}
+.white{background:white}.baby{background:#A9D8FF}
 
 /* VENUE */
 .venue{
-  background:linear-gradient(#eefdfa,#c8eee8)
+background:linear-gradient(180deg,#67cfc3,#12606c,#031c24);
+text-align:center
 }
-.button{
-  margin-top:20px;
-  padding:15px 25px;
-  background:#237782;
-  color:white;
-  text-decoration:none;
-  font-size:9px;
-  letter-spacing:2px
+.venue h2{font-size:65px}
+.venue-name{font-size:43px;margin:20px 0 8px}
+.venue-place{font:11px Arial;letter-spacing:4px}
+.map{
+display:inline-block;color:white;text-decoration:none;
+border:1px solid rgba(255,255,255,.6);padding:15px 28px;
+margin-top:30px;font:10px Arial;letter-spacing:2px
 }
 
-/* END */
-.end{
-  color:white;
-  background:linear-gradient(#071c2a,#0d5360)
+/* FINAL */
+.final{
+background:radial-gradient(circle at 50% 15%,#153c4a,#020d13 60%)
 }
-.end .sea{opacity:.5}
-.end h2{font-size:clamp(65px,14vw,120px)}
-@media(max-width:600px){
-  .info{grid-template-columns:1fr}
-  .info div{border-right:0;border-bottom:1px solid #23778233}
-  .colors{grid-template-columns:1fr 1fr}
-  .timer{gap:15px}
-  .timer b{font-size:42px}
+.final .moon{left:50%;right:auto;transform:translateX(-50%);top:12%;width:75px;height:75px}
+.final h2{font-size:70px}
+.final p{font-size:25px;line-height:1.5;margin:25px auto;max-width:600px}
+.signature{font-size:32px}
+
+/* MUSIC */
+.music{
+position:fixed;right:18px;bottom:18px;z-index:50;
+width:48px;height:48px;border-radius:50%;
+border:1px solid white;background:rgba(0,40,48,.65);
+color:white;font-size:18px
+}
+
+@media(max-width:650px){
+.cards,.dress-grid,.gallery{grid-template-columns:1fr}
+.title{font-size:52px}
+.venue h2{font-size:52px}
+.final h2{font-size:55px}
 }
 </style>
 </head>
 
 <body>
 
+<button class="music" id="music">♫</button>
+
+<!-- OPENING -->
+<section id="opening">
+<div class="sea"><div class="wave"></div><div class="wave"></div><div class="wave"></div></div>
+
+<div class="stars">
+<i style="left:10%;top:18%"></i><i style="left:25%;top:12%"></i>
+<i style="left:42%;top:22%"></i><i style="left:72%;top:15%"></i>
+<i style="left:88%;top:30%"></i>
+</div>
+
+<div class="shell sh1">🐚</div>
+<div class="shell sh2">✦</div>
+<div class="shell sh3">🐚</div>
+
+<div class="content">
+<div class="kicker">A LITTLE SOMETHING FROM THE SEA</div>
+
+<div class="envelope" id="env">
+<div class="env"></div>
+<div class="left"></div>
+<div class="right"></div>
+<div class="flap"></div>
+<div class="seal">K&M</div>
+</div>
+
+<div class="kicker" style="margin-top:30px">TAP TO OPEN</div>
+</div>
+</section>
+
+<!-- HERO -->
 <section class="hero">
-
-<div class="stars"></div>
+<div class="sea"><div class="wave"></div><div class="wave"></div><div class="wave"></div></div>
 <div class="moon"></div>
-<div class="sea"></div>
 
-<div id="envelope" class="envelope" onclick="openInvitation()">
-  <div class="letter">
-    <small>YOU ARE INVITED</small>
-    <b>K & M</b>
-    <small>14 · 10 · 2026</small>
-  </div>
-  <div class="seal">K</div>
+<div class="stars">
+<i style="left:8%;top:20%"></i><i style="left:20%;top:35%"></i>
+<i style="left:35%;top:13%"></i><i style="left:55%;top:24%"></i>
+<i style="left:75%;top:34%"></i><i style="left:90%;top:18%"></i>
 </div>
 
-<div id="openText" class="open-text">
-  TAP TO OPEN
+<div class="content">
+<div class="invite">YOU ARE INVITED TO OUR WEDDING</div>
+<h1>Khloud<br><span class="amp">&</span><br>Mohamed</h1>
+<div class="script">
+Two hearts, one love, and a lifetime<br>
+of memories waiting to begin.
 </div>
-
-<div id="heroContent" class="hero-content">
-  <div class="eyebrow">YOU ARE INVITED TO OUR WEDDING</div>
-  <h1>Khloud <i>&</i> Mohamed</h1>
-  <p>A day by the sea, a lifetime together.</p>
 </div>
-
 </section>
 
-
+<!-- DETAILS -->
 <section class="details">
+<div class="content">
+<h2 class="title">Save The Date</h2>
 
-<div class="eyebrow">THE DAY</div>
-
-<h2>
-Two hearts.<br>
-<em>One beautiful beginning.</em>
-</h2>
-
-<p>
-We would love to have you with us as we celebrate
-the beginning of our forever.
-</p>
-
-<div class="info">
-
-<div>
-<span>DATE</span>
-<strong>14 OCTOBER 2026</strong>
+<div class="cards">
+<div class="card">
+<small>DATE</small><strong>14 October 2026</strong>
+</div>
+<div class="card">
+<small>TIME</small><strong>5:00 PM</strong>
+</div>
+<div class="card">
+<small>LOCATION</small><strong>Steigenberger<br>Sidi Abdel Rahman</strong>
+</div>
 </div>
 
-<div>
-<span>TIME</span>
-<strong>5:00 PM</strong>
+<div class="count">
+<div><b id="d">00</b><small>DAYS</small></div>
+<div><b id="h">00</b><small>HOURS</small></div>
+<div><b id="m">00</b><small>MINUTES</small></div>
+<div><b id="s">00</b><small>SECONDS</small></div>
 </div>
-
-<div>
-<span>VENUE</span>
-<strong>STEIGENBERGER</strong>
 </div>
-
-</div>
-
 </section>
 
+<!-- MEMORIES -->
+<section class="memories">
+<h2 class="title">Our Memories</h2>
+<p>A few beautiful moments from our story...</p>
 
-<section class="count">
-
-<div class="eyebrow">COUNTING DOWN TO FOREVER</div>
-
-<div class="timer">
-
-<div>
-<b id="days">00</b>
-<small>DAYS</small>
+<div class="gallery">
+<div class="photo"><span>♡ K&M ♡</span></div>
+<div class="photo"><span>♡ K&M ♡</span></div>
+<div class="photo"><span>♡ K&M ♡</span></div>
+<div class="photo"><span>♡ K&M ♡</span></div>
+<div class="photo"><span>♡ K&M ♡</span></div>
+<div class="photo"><span>♡ K&M ♡</span></div>
+<div class="photo"><span>♡ K&M ♡</span></div>
+<div class="photo"><span>♡ K&M ♡</span></div>
+<div class="photo"><span>♡ K&M ♡</span></div>
 </div>
-
-<div>
-<b id="hours">00</b>
-<small>HOURS</small>
-</div>
-
-<div>
-<b id="minutes">00</b>
-<small>MINUTES</small>
-</div>
-
-<div>
-<b id="seconds">00</b>
-<small>SECONDS</small>
-</div>
-
-</div>
-
 </section>
 
-
+<!-- DRESS CODE -->
 <section class="dress">
+<h2 class="title">Dress Code</h2>
+<p class="dress-sub">Come dressed in our shades of the sea</p>
 
-<div class="eyebrow">DRESS CODE</div>
+<div class="dress-grid">
 
-<h2>
-Our shades<br>
-<em>of the sea.</em>
-</h2>
-
-<p>
-Ladies are invited to wear any of our ocean-inspired shades.
-Gentlemen: white & baby blue.
-</p>
-
-<div class="colors">
-
-<div class="color c1">SEA FOAM</div>
-<div class="color c2">LAGOON</div>
-<div class="color c3">REEF WATER</div>
-<div class="color c4">TIDAL POOL</div>
-<div class="color c5">DEEP CURRENT</div>
-<div class="color c6">OCEAN FLOOR</div>
-
+<div class="box">
+<h3>For Her</h3>
+<div class="color"><i class="circle c1"></i>SEA FOAM</div>
+<div class="color"><i class="circle c2"></i>LAGOON</div>
+<div class="color"><i class="circle c3"></i>REEF WATER</div>
+<div class="color"><i class="circle c4"></i>TIDAL POOL</div>
+<div class="color"><i class="circle c5"></i>DEEP CURRENT</div>
+<div class="color"><i class="circle c6"></i>OCEAN FLOOR</div>
 </div>
 
-<p><b>GENTLEMEN</b><br>WHITE + BABY BLUE</p>
+<div class="box">
+<h3>For Him</h3>
+<div class="color"><i class="circle white"></i>WHITE</div>
+<div class="color"><i class="circle baby"></i>BABY BLUE</div>
+</div>
 
+</div>
 </section>
 
-
+<!-- VENUE -->
 <section class="venue">
+<div class="content">
+<h2>Meet Us By The Sea</h2>
+<div class="venue-name">Steigenberger</div>
+<div class="venue-place">SIDI ABDEL RAHMAN · NORTH COAST</div>
 
-<div class="eyebrow">THE PLACE</div>
-
-<h2>
-Meet us<br>
-<em>by the sea.</em>
-</h2>
-
-<h3>STEIGENBERGER</h3>
-
-<p>
-14 October 2026 · 5:00 PM
-</p>
-
-<a class="button"
-href="https://www.google.com/maps/search/?api=1&query=Steigenberger%20Sidi%20Abdel%20Rahman"
+<a class="map"
+href="https://www.google.com/maps/search/?api=1&query=Steigenberger+Hotel+Sidi+Abdel+Rahman"
 target="_blank">
 OPEN LOCATION
 </a>
-
-</section>
-
-
-<section class="end">
-
-<div class="stars"></div>
-<div class="moon"></div>
-<div class="sea"></div>
-
-<div style="z-index:2">
-
-<div class="eyebrow">UNTIL THEN…</div>
-
-<h2>
-See you<br>
-<em>by the sea.</em>
-</h2>
-
-<p>Khloud & Mohamed</p>
-
-<p>14 · 10 · 2026</p>
-
 </div>
-
 </section>
 
+<!-- FINAL -->
+<section class="final">
+<div class="moon"></div>
+<div class="content">
+<h2>Until Forever</h2>
+<p>
+The sea brought us here,<br>
+love brought us together,<br>
+and now we begin forever.
+</p>
+<div class="signature">Khloud & Mohamed ♡</div>
+</div>
+</section>
 
 <script>
+/* ENVELOPE */
+const env=document.getElementById("env");
 
-function openInvitation(){
+env.addEventListener("click",()=>{
+env.classList.add("open");
 
-document.getElementById("envelope")
-.classList.add("open");
+setTimeout(()=>{
+document.querySelector(".hero").scrollIntoView({behavior:"smooth"});
+},900);
 
-document.getElementById("openText")
-.style.display="none";
+startOcean();
+});
 
-setTimeout(function(){
-
-document.getElementById("heroContent")
-.classList.add("show");
-
-},700);
-
-}
-
-
-const weddingDate =
-new Date("2026-10-14T17:00:00+03:00").getTime();
+/* COUNTDOWN */
+const wedding=new Date("2026-10-14T17:00:00").getTime();
 
 function countdown(){
+let x=wedding-Date.now();
 
-let now=new Date().getTime();
-let distance=weddingDate-now;
+if(x<0)x=0;
 
-if(distance<0) distance=0;
+document.getElementById("d").textContent=Math.floor(x/86400000);
+document.getElementById("h").textContent=Math.floor(x/3600000)%24;
+document.getElementById("m").textContent=Math.floor(x/60000)%60;
+document.getElementById("s").textContent=Math.floor(x/1000)%60;
+}
+setInterval(countdown,1000);
+countdown();
 
-let days=Math.floor(distance/(1000*60*60*24));
+/* OCEAN SOUND CREATED IN BROWSER */
+let audioCtx;
+let oceanStarted=false;
 
-let hours=Math.floor(
-(distance%(1000*60*60*24))/(1000*60*60)
-);
+function startOcean(){
+if(oceanStarted)return;
+oceanStarted=true;
 
-let minutes=Math.floor(
-(distance%(1000*60*60))/(1000*60)
-);
+try{
+audioCtx=new(window.AudioContext||window.webkitAudioContext)();
 
-let seconds=Math.floor(
-(distance%(1000*60))/1000
-);
+const buffer=audioCtx.createBuffer(1,audioCtx.sampleRate*4,audioCtx.sampleRate);
+const data=buffer.getChannelData(0);
 
-document.getElementById("days").innerHTML=
-String(days).padStart(2,"0");
-
-document.getElementById("hours").innerHTML=
-String(hours).padStart(2,"0");
-
-document.getElementById("minutes").innerHTML=
-String(minutes).padStart(2,"0");
-
-document.getElementById("seconds").innerHTML=
-String(seconds).padStart(2,"0");
-
+for(let i=0;i<data.length;i++){
+data[i]=(Math.random()*2-1)*0.12;
 }
 
-countdown();
-setInterval(countdown,1000);
+const source=audioCtx.createBufferSource();
+source.buffer=buffer;
+source.loop=true;
 
+const filter=audioCtx.createBiquadFilter();
+filter.type="lowpass";
+filter.frequency.value=700;
+
+const gain=audioCtx.createGain();
+gain.gain.value=.045;
+
+source.connect(filter);
+filter.connect(gain);
+gain.connect(audioCtx.destination);
+source.start();
+}catch(e){}
+}
+
+/* MUSIC BUTTON */
+document.getElementById("music").onclick=()=>{
+startOcean();
+if(audioCtx&&audioCtx.state==="suspended")audioCtx.resume();
+};
 </script>
 
 </body>
