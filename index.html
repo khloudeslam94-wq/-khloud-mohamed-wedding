@@ -5,419 +5,1125 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Khloud & Mohamed | Wedding</title>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Great+Vibes&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
 body{
-font-family:Georgia,'Times New Roman',serif;
-background:#062b35;color:#fff;overflow-x:hidden
+  font-family:Montserrat,sans-serif;
+  color:#23434a;
+  background:#f8f1e7;
 }
-section{
-min-height:100vh;position:relative;overflow:hidden;
-display:flex;align-items:center;justify-content:center;
-}
-.sea{
-position:absolute;inset:0;
-background:
-radial-gradient(circle at 50% 8%,rgba(255,255,255,.3),transparent 16%),
-linear-gradient(180deg,#d1fff2 0%,#8de0d5 28%,#46a3a9 55%,#237782 78%,#062b35 100%);
-}
-.wave{
-position:absolute;left:-20%;bottom:-90px;width:140%;height:220px;
-background:rgba(255,255,255,.14);border-radius:50%;
-animation:w 8s ease-in-out infinite alternate;
-}
-.wave:nth-child(2){bottom:-140px;animation-duration:11s;opacity:.65}
-.wave:nth-child(3){bottom:-190px;animation-duration:14s;opacity:.4}
-@keyframes w{to{transform:translateX(5%) rotate(2deg)}}
 
-.stars i{
-position:absolute;width:4px;height:4px;background:white;
-border-radius:50%;box-shadow:0 0 12px white;
-animation:s 2s infinite alternate
-}
-@keyframes s{to{opacity:.25;transform:scale(.5)}}
+/* =========================
+   OPENING
+========================= */
 
-.shell{
-position:absolute;font-size:45px;z-index:2;
-animation:f 5s ease-in-out infinite
+.cover{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:
+    linear-gradient(
+      180deg,
+      #9bcbd2 0%,
+      #cfe4e0 38%,
+      #eadcc5 70%,
+      #c7aa78 100%
+    );
+  transition:opacity 1.2s ease,visibility 1.2s ease;
 }
-.sh1{left:7%;bottom:8%}.sh2{right:8%;top:13%;font-size:32px}
-.sh3{right:12%;bottom:14%;font-size:27px}
-@keyframes f{50%{transform:translateY(-15px) rotate(7deg)}}
 
-.content{position:relative;z-index:5;text-align:center;padding:25px}
-.kicker{font:11px Arial;letter-spacing:5px;margin-bottom:30px}
-h1,h2,h3{font-weight:400}
-h1{font-size:clamp(65px,15vw,135px);line-height:.75}
-.amp{font-size:.65em}
-.script{font-size:25px;line-height:1.5;margin-top:35px}
+.cover.hide{
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+}
 
-/* ENVELOPE */
-.envelope{
-width:300px;height:205px;margin:auto;position:relative;
-cursor:pointer;filter:drop-shadow(0 20px 25px rgba(0,0,0,.3));
-transition:1s
+.cover:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 12% 20%,rgba(255,255,255,.9) 0 1px,transparent 2px),
+    radial-gradient(circle at 70% 15%,rgba(255,255,255,.8) 0 1px,transparent 2px),
+    radial-gradient(circle at 83% 35%,rgba(255,255,255,.7) 0 1px,transparent 2px),
+    radial-gradient(circle at 30% 40%,rgba(255,255,255,.8) 0 1px,transparent 2px);
+  background-size:110px 110px,150px 150px,130px 130px,180px 180px;
+  opacity:.7;
 }
-.env{
-position:absolute;inset:0;border-radius:8px;
-background:#f4fffc;box-shadow:inset 0 0 0 2px #b2e8df
-}
-.left,.right{
-position:absolute;bottom:0;width:0;height:0;z-index:3
-}
-.left{border-top:103px solid #c5e8e1;border-right:150px solid transparent}
-.right{right:0;border-top:103px solid #b9ddd7;border-left:150px solid transparent}
-.flap{
-position:absolute;top:0;left:0;width:0;height:0;z-index:5;
-border-left:150px solid transparent;border-right:150px solid transparent;
-border-top:110px solid #eafff9;transform-origin:top;transition:1s
-}
-.seal{
-position:absolute;z-index:7;left:50%;top:50%;
-transform:translate(-50%,-50%);width:60px;height:60px;
-border-radius:50%;background:#237782;border:4px solid #b2ffe6;
-display:grid;place-items:center;font-size:17px
-}
-.open .flap{transform:rotateX(180deg)}
-.open{transform:scale(.8);opacity:0}
 
-/* HERO */
 .moon{
-position:absolute;right:12%;top:9%;width:90px;height:90px;
-border-radius:50%;background:#fff8d8;box-shadow:0 0 45px #fff5b0
+  position:absolute;
+  top:8%;
+  right:9%;
+  width:70px;
+  height:70px;
+  border-radius:50%;
+  background:#fff7dd;
+  box-shadow:0 0 35px rgba(255,247,221,.7);
 }
-.hero .content{max-width:900px}
-.invite{font:11px Arial;letter-spacing:7px}
-.hero h1{margin:30px 0}
 
-/* DETAILS */
+.sand{
+  position:absolute;
+  bottom:-15%;
+  left:-10%;
+  width:120%;
+  height:45%;
+  background:
+    radial-gradient(ellipse at center top,
+    rgba(255,255,255,.7),
+    transparent 55%),
+    linear-gradient(#e9dcc4,#c4a675);
+  border-radius:50% 50% 0 0;
+}
+
+.sea-star{
+  position:absolute;
+  font-size:35px;
+  color:#fff;
+  opacity:.8;
+}
+
+.star1{left:9%;bottom:18%}
+.star2{right:10%;bottom:20%;font-size:27px}
+.star3{left:20%;top:23%;font-size:20px}
+
+.envelope{
+  position:relative;
+  z-index:5;
+  width:min(88vw,600px);
+  aspect-ratio:1.45;
+  cursor:pointer;
+  filter:drop-shadow(0 30px 30px rgba(30,60,65,.25));
+  transition:transform 1s ease,opacity .8s ease;
+}
+
+.envelope.open{
+  transform:scale(1.15) translateY(-30px);
+  opacity:0;
+}
+
+.envelope-body{
+  position:absolute;
+  inset:0;
+  overflow:hidden;
+  border-radius:8px;
+  background:
+    linear-gradient(
+      145deg,
+      #dceced,
+      #8ebfc7 45%,
+      #477f8a
+    );
+  border:2px solid rgba(255,255,255,.7);
+}
+
+.envelope-body:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 20% 30%,rgba(255,255,255,.4),transparent 20%),
+    linear-gradient(140deg,transparent 48%,rgba(255,255,255,.35) 49%,transparent 51%),
+    linear-gradient(35deg,transparent 48%,rgba(255,255,255,.3) 49%,transparent 51%);
+}
+
+.flap{
+  position:absolute;
+  z-index:3;
+  top:0;
+  left:0;
+  width:100%;
+  height:58%;
+  clip-path:polygon(0 0,100% 0,50% 100%);
+  background:
+    linear-gradient(160deg,#fffdf7,#e9e4d9);
+  border-bottom:2px solid rgba(180,150,100,.5);
+  transform-origin:top center;
+  transition:transform 1s ease;
+}
+
+.envelope.open .flap{
+  transform:rotateX(180deg);
+}
+
+.seal{
+  position:absolute;
+  z-index:5;
+  left:50%;
+  top:53%;
+  transform:translate(-50%,-50%);
+  width:78px;
+  height:78px;
+  border-radius:50%;
+  background:#eee1c8;
+  border:4px solid #d3bd91;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:31px;
+  color:#a78959;
+  box-shadow:0 5px 15px rgba(0,0,0,.15);
+}
+
+.envelope-text{
+  position:absolute;
+  z-index:4;
+  left:50%;
+  top:25%;
+  transform:translateX(-50%);
+  font-family:"Great Vibes",cursive;
+  font-size:38px;
+  color:#94734c;
+  white-space:nowrap;
+}
+
+.tap{
+  position:absolute;
+  z-index:6;
+  bottom:-55px;
+  left:50%;
+  transform:translateX(-50%);
+  color:white;
+  font-size:10px;
+  letter-spacing:4px;
+  white-space:nowrap;
+}
+
+/* =========================
+   MAIN
+========================= */
+
+main{
+  opacity:0;
+  transition:opacity 1.5s ease;
+}
+
+main.show{
+  opacity:1;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+  height:100svh;
+  position:relative;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  color:white;
+}
+
+.hero video{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.hero:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(
+      rgba(15,55,65,.12),
+      rgba(15,45,50,.42)
+    );
+}
+
+.hero-content{
+  position:relative;
+  z-index:2;
+  padding:20px;
+}
+
+.kicker{
+  font-size:11px;
+  letter-spacing:5px;
+  text-transform:uppercase;
+  margin-bottom:25px;
+}
+
+.names{
+  font-family:"Great Vibes",cursive;
+  font-size:clamp(65px,13vw,125px);
+  line-height:1;
+  text-shadow:0 4px 20px rgba(0,0,0,.25);
+}
+
+.hero-date{
+  margin-top:30px;
+  font-size:12px;
+  letter-spacing:4px;
+  text-transform:uppercase;
+}
+
+.scroll{
+  position:absolute;
+  z-index:3;
+  bottom:25px;
+  font-size:9px;
+  letter-spacing:4px;
+  text-transform:uppercase;
+}
+
+/* =========================
+   SECTIONS
+========================= */
+
+.section{
+  position:relative;
+  padding:100px 7%;
+  overflow:hidden;
+}
+
+.sand-section{
+  background:
+    linear-gradient(180deg,#faf3e8,#e9ddca);
+}
+
+.sea-section{
+  background:
+    linear-gradient(180deg,#d9edf0,#f8f0e3);
+}
+
+.eyebrow{
+  text-align:center;
+  font-size:10px;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  color:#71979c;
+}
+
+h2{
+  text-align:center;
+  font-family:"Cormorant Garamond",serif;
+  font-size:65px;
+  font-weight:500;
+  margin:8px 0 45px;
+}
+
 .details{
-background:linear-gradient(180deg,#67cfc3,#237782,#062b35);
-text-align:center
+  max-width:1000px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
 }
-.details .content{width:min(900px,92%)}
-.title{font-size:65px;margin-bottom:40px}
-.cards{
-display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:55px
+
+.detail{
+  text-align:center;
+  padding:35px 15px;
+  background:rgba(255,255,255,.55);
+  border:1px solid rgba(255,255,255,.8);
 }
-.card{
-padding:30px 15px;background:rgba(255,255,255,.09);
-border:1px solid rgba(255,255,255,.3);backdrop-filter:blur(7px)
+
+.detail-icon{
+  font-size:27px;
+  margin-bottom:15px;
 }
-.card small{display:block;font:10px Arial;letter-spacing:3px;margin-bottom:15px}
-.card strong{font-size:26px;font-weight:400}
-.count{display:flex;justify-content:center;gap:35px;flex-wrap:wrap}
-.count b{display:block;font-size:48px;font-weight:400}
-.count small{font:9px Arial;letter-spacing:2px}
+
+.detail h3{
+  font-family:"Cormorant Garamond",serif;
+  font-size:30px;
+  font-weight:500;
+  margin-bottom:8px;
+}
+
+.detail p{
+  font-size:10px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  line-height:1.7;
+}
+
+/* COUNTDOWN */
+
+.countdown{
+  margin:55px auto 0;
+  display:flex;
+  justify-content:center;
+  gap:55px;
+  flex-wrap:wrap;
+}
+
+.countdown-item{
+  text-align:center;
+}
+
+.countdown-item strong{
+  display:block;
+  font-family:"Cormorant Garamond",serif;
+  font-size:48px;
+  font-weight:500;
+}
+
+.countdown-item span{
+  font-size:9px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+}
+
+/* STORY */
+
+.story{
+  max-width:750px;
+  margin:auto;
+  text-align:center;
+  font-family:"Cormorant Garamond",serif;
+  font-size:28px;
+  line-height:1.6;
+}
 
 /* MEMORIES */
+
 .memories{
-background:#eefbf7;color:#164c55;display:block;padding:100px 6%
+  max-width:1100px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
 }
-.memories .title{text-align:center}
-.memories p{text-align:center;font-size:21px;margin-top:-25px;margin-bottom:45px}
-.gallery{
-max-width:1050px;margin:auto;display:grid;
-grid-template-columns:repeat(3,1fr);gap:18px
+
+.memory{
+  aspect-ratio:3/4;
+  overflow:hidden;
+  background:#d7d0c5;
 }
-.photo{
-aspect-ratio:4/5;border-radius:6px;overflow:hidden;
-background:linear-gradient(145deg,#d1fff2,#67cfc3);
-display:flex;align-items:center;justify-content:center;
-font-size:25px;color:#237782;position:relative
+
+.memory img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:transform .7s ease;
 }
-.photo span{font-size:13px;letter-spacing:2px}
-.photo:nth-child(2){aspect-ratio:1/1}
-.photo:nth-child(5){aspect-ratio:1/1}
-.photo:nth-child(8){aspect-ratio:1/1}
+
+.memory:hover img{
+  transform:scale(1.05);
+}
 
 /* DRESS */
+
 .dress{
-background:linear-gradient(180deg,#d1fff2,#67cfc3,#237782);
-display:block;padding:100px 6%
+  max-width:1000px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:70px;
 }
-.dress .title{text-align:center}
-.dress-sub{text-align:center;font-size:22px;margin-top:-25px;margin-bottom:50px}
-.dress-grid{
-max-width:850px;margin:auto;display:grid;
-grid-template-columns:1fr 1fr;gap:30px
+
+.dress-side{
+  text-align:center;
 }
-.box{
-padding:35px;background:rgba(255,255,255,.18);
-border:1px solid rgba(255,255,255,.5);backdrop-filter:blur(8px)
+
+.dress-side h3{
+  font-family:"Cormorant Garamond",serif;
+  font-size:35px;
+  font-weight:500;
+  margin-bottom:25px;
 }
-.box h3{text-align:center;font-size:35px;margin-bottom:25px}
-.color{display:flex;align-items:center;gap:14px;margin:14px 0;font:11px Arial;letter-spacing:1px}
-.circle{width:31px;height:31px;border-radius:50%;border:1px solid rgba(0,0,0,.12)}
-.c1{background:#D1FFF2}.c2{background:#B2FFE6}.c3{background:#8DE0D5}
-.c4{background:#67CFC3}.c5{background:#46A3A9}.c6{background:#237782}
-.white{background:white}.baby{background:#A9D8FF}
+
+.colors{
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  flex-wrap:wrap;
+}
+
+.color{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:7px;
+  font-size:8px;
+  letter-spacing:1px;
+  text-transform:uppercase;
+}
+
+.color-circle{
+  width:43px;
+  height:43px;
+  border-radius:50%;
+  border:2px solid white;
+  box-shadow:0 3px 10px rgba(0,0,0,.12);
+}
 
 /* VENUE */
+
 .venue{
-background:linear-gradient(180deg,#67cfc3,#12606c,#031c24);
-text-align:center
+  max-width:1100px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:60px;
+  align-items:center;
 }
-.venue h2{font-size:65px}
-.venue-name{font-size:43px;margin:20px 0 8px}
-.venue-place{font:11px Arial;letter-spacing:4px}
+
+.venue-image{
+  height:500px;
+  background:
+    linear-gradient(
+      180deg,
+      #80b8c0,
+      #d8c29f
+    );
+  position:relative;
+  overflow:hidden;
+}
+
+.venue-image:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 75% 22%,#fff0b8 0 35px,transparent 36px),
+    linear-gradient(180deg,transparent 55%,rgba(70,110,105,.2));
+}
+
+.venue-copy h2{
+  text-align:left;
+  margin-bottom:15px;
+}
+
+.venue-copy p{
+  font-family:"Cormorant Garamond",serif;
+  font-size:27px;
+  line-height:1.5;
+}
+
 .map{
-display:inline-block;color:white;text-decoration:none;
-border:1px solid rgba(255,255,255,.6);padding:15px 28px;
-margin-top:30px;font:10px Arial;letter-spacing:2px
+  display:inline-block;
+  margin-top:25px;
+  padding:14px 25px;
+  border:1px solid #3c6e76;
+  color:#3c6e76;
+  text-decoration:none;
+  font-size:10px;
+  letter-spacing:3px;
+  text-transform:uppercase;
 }
 
-/* FINAL */
+/* =========================
+   NIGHT
+========================= */
+
+.night{
+  min-height:90svh;
+  position:relative;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  color:white;
+  background:
+    linear-gradient(
+      180deg,
+      #123b4a,
+      #061d29
+    );
+}
+
+.night:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 50% 22%,
+      #fff6d7 0 42px,
+      rgba(255,246,215,.15) 43px,
+      transparent 95px);
+}
+
+.stars{
+  position:absolute;
+  inset:0;
+  background-image:
+    radial-gradient(#fff 1px,transparent 1.5px);
+  background-size:90px 90px;
+  opacity:.45;
+}
+
 .final{
-background:radial-gradient(circle at 50% 15%,#153c4a,#020d13 60%)
-}
-.final .moon{left:50%;right:auto;transform:translateX(-50%);top:12%;width:75px;height:75px}
-.final h2{font-size:70px}
-.final p{font-size:25px;line-height:1.5;margin:25px auto;max-width:600px}
-.signature{font-size:32px}
-
-/* MUSIC */
-.music{
-position:fixed;right:18px;bottom:18px;z-index:50;
-width:48px;height:48px;border-radius:50%;
-border:1px solid white;background:rgba(0,40,48,.65);
-color:white;font-size:18px
+  position:relative;
+  z-index:2;
 }
 
-@media(max-width:650px){
-.cards,.dress-grid,.gallery{grid-template-columns:1fr}
-.title{font-size:52px}
-.venue h2{font-size:52px}
-.final h2{font-size:55px}
+.final .names{
+  font-size:100px;
+}
+
+.final p{
+  font-family:"Cormorant Garamond",serif;
+  font-size:26px;
+  margin-top:20px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:750px){
+
+  .details{
+    grid-template-columns:1fr;
+  }
+
+  .memories{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .dress{
+    grid-template-columns:1fr;
+    gap:50px;
+  }
+
+  .venue{
+    grid-template-columns:1fr;
+  }
+
+  .venue-copy{
+    text-align:center;
+  }
+
+  .venue-copy h2{
+    text-align:center;
+  }
+
+  .venue-image{
+    height:370px;
+  }
+
+  h2{
+    font-size:52px;
+  }
+
+  .countdown{
+    gap:25px;
+  }
+
+  .countdown-item strong{
+    font-size:40px;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<button class="music" id="music">♫</button>
+<!-- =========================
+     OPENING ENVELOPE
+========================= -->
 
-<!-- OPENING -->
-<section id="opening">
-<div class="sea"><div class="wave"></div><div class="wave"></div><div class="wave"></div></div>
+<div class="cover" id="cover">
 
-<div class="stars">
-<i style="left:10%;top:18%"></i><i style="left:25%;top:12%"></i>
-<i style="left:42%;top:22%"></i><i style="left:72%;top:15%"></i>
-<i style="left:88%;top:30%"></i>
+  <div class="moon"></div>
+
+  <div class="sea-star star1">✦</div>
+  <div class="sea-star star2">✧</div>
+  <div class="sea-star star3">✦</div>
+
+  <div class="sand"></div>
+
+  <div class="envelope" id="envelope">
+
+    <div class="envelope-body"></div>
+
+    <div class="flap"></div>
+
+    <div class="envelope-text">
+      Khloud & Mohamed
+    </div>
+
+    <div class="seal">
+      ♡
+    </div>
+
+    <div class="tap">
+      TAP TO OPEN
+    </div>
+
+  </div>
+
 </div>
 
-<div class="shell sh1">🐚</div>
-<div class="shell sh2">✦</div>
-<div class="shell sh3">🐚</div>
 
-<div class="content">
-<div class="kicker">A LITTLE SOMETHING FROM THE SEA</div>
+<main id="main">
 
-<div class="envelope" id="env">
-<div class="env"></div>
-<div class="left"></div>
-<div class="right"></div>
-<div class="flap"></div>
-<div class="seal">K&M</div>
-</div>
+<!-- =========================
+     HERO
+========================= -->
 
-<div class="kicker" style="margin-top:30px">TAP TO OPEN</div>
-</div>
-</section>
-
-<!-- HERO -->
 <section class="hero">
-<div class="sea"><div class="wave"></div><div class="wave"></div><div class="wave"></div></div>
-<div class="moon"></div>
 
-<div class="stars">
-<i style="left:8%;top:20%"></i><i style="left:20%;top:35%"></i>
-<i style="left:35%;top:13%"></i><i style="left:55%;top:24%"></i>
-<i style="left:75%;top:34%"></i><i style="left:90%;top:18%"></i>
-</div>
+  <video
+    autoplay
+    muted
+    loop
+    playsinline
+    poster="">
+    
+    <source
+      src="https://videos.pexels.com/video-files/13538373/13538373-uhd_3840_2160_60fps.mp4"
+      type="video/mp4">
 
-<div class="content">
-<div class="invite">YOU ARE INVITED TO OUR WEDDING</div>
-<h1>Khloud<br><span class="amp">&</span><br>Mohamed</h1>
-<div class="script">
-Two hearts, one love, and a lifetime<br>
-of memories waiting to begin.
-</div>
-</div>
+  </video>
+
+  <div class="hero-content">
+
+    <div class="kicker">
+      You are invited to our wedding
+    </div>
+
+    <div class="names">
+      Khloud & Mohamed
+    </div>
+
+    <div class="hero-date">
+      14 October 2026 · 5:00 PM · Steigenberger Sidi Abdel Rahman
+    </div>
+
+  </div>
+
+  <div class="scroll">
+    Scroll to discover ↓
+  </div>
+
 </section>
 
-<!-- DETAILS -->
-<section class="details">
-<div class="content">
-<h2 class="title">Save The Date</h2>
 
-<div class="cards">
-<div class="card">
-<small>DATE</small><strong>14 October 2026</strong>
-</div>
-<div class="card">
-<small>TIME</small><strong>5:00 PM</strong>
-</div>
-<div class="card">
-<small>LOCATION</small><strong>Steigenberger<br>Sidi Abdel Rahman</strong>
-</div>
-</div>
+<!-- =========================
+     DETAILS
+========================= -->
 
-<div class="count">
-<div><b id="d">00</b><small>DAYS</small></div>
-<div><b id="h">00</b><small>HOURS</small></div>
-<div><b id="m">00</b><small>MINUTES</small></div>
-<div><b id="s">00</b><small>SECONDS</small></div>
-</div>
-</div>
+<section class="section sand-section">
+
+  <div class="eyebrow">
+    A day by the sea
+  </div>
+
+  <h2>
+    Our Wedding
+  </h2>
+
+  <div class="details">
+
+    <div class="detail">
+      <div class="detail-icon">♡</div>
+      <h3>Wednesday</h3>
+      <p>14 October 2026</p>
+    </div>
+
+    <div class="detail">
+      <div class="detail-icon">◷</div>
+      <h3>5:00 PM</h3>
+      <p>As the sun begins to set</p>
+    </div>
+
+    <div class="detail">
+      <div class="detail-icon">⌖</div>
+      <h3>Steigenberger</h3>
+      <p>Sidi Abdel Rahman · North Coast</p>
+    </div>
+
+  </div>
+
+
+  <div class="countdown">
+
+    <div class="countdown-item">
+      <strong id="days">--</strong>
+      <span>Days</span>
+    </div>
+
+    <div class="countdown-item">
+      <strong id="hours">--</strong>
+      <span>Hours</span>
+    </div>
+
+    <div class="countdown-item">
+      <strong id="minutes">--</strong>
+      <span>Minutes</span>
+    </div>
+
+    <div class="countdown-item">
+      <strong id="seconds">--</strong>
+      <span>Seconds</span>
+    </div>
+
+  </div>
+
 </section>
 
-<!-- MEMORIES -->
-<section class="memories">
-<h2 class="title">Our Memories</h2>
-<p>A few beautiful moments from our story...</p>
 
-<div class="gallery">
-<div class="photo"><span>♡ K&M ♡</span></div>
-<div class="photo"><span>♡ K&M ♡</span></div>
-<div class="photo"><span>♡ K&M ♡</span></div>
-<div class="photo"><span>♡ K&M ♡</span></div>
-<div class="photo"><span>♡ K&M ♡</span></div>
-<div class="photo"><span>♡ K&M ♡</span></div>
-<div class="photo"><span>♡ K&M ♡</span></div>
-<div class="photo"><span>♡ K&M ♡</span></div>
-<div class="photo"><span>♡ K&M ♡</span></div>
-</div>
+<!-- =========================
+     STORY
+========================= -->
+
+<section class="section sea-section">
+
+  <div class="eyebrow">
+    Our story
+  </div>
+
+  <h2>
+    Two hearts
+  </h2>
+
+  <p class="story">
+    Two hearts, one beautiful beginning,
+    and a lifetime waiting by the sea.
+    We can't wait to celebrate this special
+    moment with the people we love.
+  </p>
+
 </section>
 
-<!-- DRESS CODE -->
-<section class="dress">
-<h2 class="title">Dress Code</h2>
-<p class="dress-sub">Come dressed in our shades of the sea</p>
 
-<div class="dress-grid">
+<!-- =========================
+     MEMORIES
+========================= -->
 
-<div class="box">
-<h3>For Her</h3>
-<div class="color"><i class="circle c1"></i>SEA FOAM</div>
-<div class="color"><i class="circle c2"></i>LAGOON</div>
-<div class="color"><i class="circle c3"></i>REEF WATER</div>
-<div class="color"><i class="circle c4"></i>TIDAL POOL</div>
-<div class="color"><i class="circle c5"></i>DEEP CURRENT</div>
-<div class="color"><i class="circle c6"></i>OCEAN FLOOR</div>
-</div>
+<section class="section sand-section">
 
-<div class="box">
-<h3>For Him</h3>
-<div class="color"><i class="circle white"></i>WHITE</div>
-<div class="color"><i class="circle baby"></i>BABY BLUE</div>
-</div>
+  <div class="eyebrow">
+    Our moments
+  </div>
 
-</div>
+  <h2>
+    Memories
+  </h2>
+
+  <div class="memories">
+
+    <div class="memory">
+      <img src="photo1.jpg">
+    </div>
+
+    <div class="memory">
+      <img src="photo2.jpg">
+    </div>
+
+    <div class="memory">
+      <img src="photo3.jpg">
+    </div>
+
+    <div class="memory">
+      <img src="photo4.jpg">
+    </div>
+
+    <div class="memory">
+      <img src="photo5.jpg">
+    </div>
+
+    <div class="memory">
+      <img src="photo6.jpg">
+    </div>
+
+    <div class="memory">
+      <img src="photo7.jpg">
+    </div>
+
+    <div class="memory">
+      <img src="photo8.jpg">
+    </div>
+
+  </div>
+
 </section>
 
-<!-- VENUE -->
-<section class="venue">
-<div class="content">
-<h2>Meet Us By The Sea</h2>
-<div class="venue-name">Steigenberger</div>
-<div class="venue-place">SIDI ABDEL RAHMAN · NORTH COAST</div>
 
-<a class="map"
-href="https://www.google.com/maps/search/?api=1&query=Steigenberger+Hotel+Sidi+Abdel+Rahman"
-target="_blank">
-OPEN LOCATION
-</a>
-</div>
+<!-- =========================
+     DRESS CODE
+========================= -->
+
+<section class="section sea-section">
+
+  <div class="eyebrow">
+    Come dressed by the sea
+  </div>
+
+  <h2>
+    Dress Code
+  </h2>
+
+  <div class="dress">
+
+    <div class="dress-side">
+
+      <h3>
+        For Her
+      </h3>
+
+      <div class="colors">
+
+        <div class="color">
+          <div class="color-circle" style="background:#D1FFF2"></div>
+          Sea Foam
+        </div>
+
+        <div class="color">
+          <div class="color-circle" style="background:#B2FFE6"></div>
+          Lagoon
+        </div>
+
+        <div class="color">
+          <div class="color-circle" style="background:#8DE0D5"></div>
+          Reef Water
+        </div>
+
+        <div class="color">
+          <div class="color-circle" style="background:#67CFC3"></div>
+          Tidal Pool
+        </div>
+
+        <div class="color">
+          <div class="color-circle" style="background:#46A3A9"></div>
+          Deep Current
+        </div>
+
+        <div class="color">
+          <div class="color-circle" style="background:#237782"></div>
+          Ocean Floor
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="dress-side">
+
+      <h3>
+        For Him
+      </h3>
+
+      <div class="colors">
+
+        <div class="color">
+          <div class="color-circle" style="background:#ffffff"></div>
+          White
+        </div>
+
+        <div class="color">
+          <div class="color-circle" style="background:#9FD4FF"></div>
+          Baby Blue
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
 </section>
 
-<!-- FINAL -->
-<section class="final">
-<div class="moon"></div>
-<div class="content">
-<h2>Until Forever</h2>
-<p>
-The sea brought us here,<br>
-love brought us together,<br>
-and now we begin forever.
-</p>
-<div class="signature">Khloud & Mohamed ♡</div>
-</div>
+
+<!-- =========================
+     VENUE
+========================= -->
+
+<section class="section sand-section">
+
+  <div class="venue">
+
+    <div class="venue-image"></div>
+
+    <div class="venue-copy">
+
+      <div class="eyebrow">
+        The venue
+      </div>
+
+      <h2>
+        Steigenberger<br>
+        Sidi Abdel Rahman
+      </h2>
+
+      <p>
+        Meet us where the sand meets the sea,
+        for an evening made for love,
+        sunsets and forever.
+      </p>
+
+      <a
+        class="map"
+        href="https://www.google.com/maps/search/?api=1&query=Steigenberger+Hotel+Sidi+Abdel+Rahman"
+        target="_blank">
+
+        View Location
+
+      </a>
+
+    </div>
+
+  </div>
+
 </section>
+
+
+<!-- =========================
+     FINAL
+========================= -->
+
+<section class="night">
+
+  <div class="stars"></div>
+
+  <div class="final">
+
+    <div class="eyebrow" style="color:#dcebed">
+      Until forever
+    </div>
+
+    <div class="names">
+      Thank you
+    </div>
+
+    <p>
+      For being part of our special day.
+    </p>
+
+    <br>
+
+    <div style="letter-spacing:4px;font-size:10px">
+      KHLOUD & MOHAMED
+    </div>
+
+  </div>
+
+</section>
+
+</main>
+
 
 <script>
-/* ENVELOPE */
-const env=document.getElementById("env");
 
-env.addEventListener("click",()=>{
-env.classList.add("open");
+/* =========================
+   OPEN ENVELOPE
+========================= */
 
-setTimeout(()=>{
-document.querySelector(".hero").scrollIntoView({behavior:"smooth"});
-},900);
+const envelope =
+document.getElementById("envelope");
 
-startOcean();
+const cover =
+document.getElementById("cover");
+
+const main =
+document.getElementById("main");
+
+
+envelope.addEventListener("click",function(){
+
+  envelope.classList.add("open");
+
+  setTimeout(function(){
+
+    cover.classList.add("hide");
+
+    main.classList.add("show");
+
+    window.scrollTo({
+      top:window.innerHeight,
+      behavior:"smooth"
+    });
+
+  },900);
+
 });
 
-/* COUNTDOWN */
-const wedding=new Date("2026-10-14T17:00:00").getTime();
+
+/* =========================
+   COUNTDOWN
+========================= */
+
+const weddingDate =
+new Date("2026-10-14T17:00:00+03:00")
+.getTime();
+
 
 function countdown(){
-let x=wedding-Date.now();
 
-if(x<0)x=0;
+  const now =
+  new Date().getTime();
 
-document.getElementById("d").textContent=Math.floor(x/86400000);
-document.getElementById("h").textContent=Math.floor(x/3600000)%24;
-document.getElementById("m").textContent=Math.floor(x/60000)%60;
-document.getElementById("s").textContent=Math.floor(x/1000)%60;
+  const difference =
+  weddingDate-now;
+
+  if(difference<=0){
+
+    document.getElementById("days").innerText="0";
+    document.getElementById("hours").innerText="0";
+    document.getElementById("minutes").innerText="0";
+    document.getElementById("seconds").innerText="0";
+
+    return;
+  }
+
+
+  const days =
+  Math.floor(
+    difference/(1000*60*60*24)
+  );
+
+  const hours =
+  Math.floor(
+    (difference%(1000*60*60*24))
+    /(1000*60*60)
+  );
+
+  const minutes =
+  Math.floor(
+    (difference%(1000*60*60))
+    /(1000*60)
+  );
+
+  const seconds =
+  Math.floor(
+    (difference%(1000*60))
+    /1000
+  );
+
+
+  document.getElementById("days")
+  .innerText=days;
+
+  document.getElementById("hours")
+  .innerText=String(hours).padStart(2,"0");
+
+  document.getElementById("minutes")
+  .innerText=String(minutes).padStart(2,"0");
+
+  document.getElementById("seconds")
+  .innerText=String(seconds).padStart(2,"0");
+
 }
-setInterval(countdown,1000);
+
 countdown();
 
-/* OCEAN SOUND CREATED IN BROWSER */
-let audioCtx;
-let oceanStarted=false;
+setInterval(countdown,1000);
 
-function startOcean(){
-if(oceanStarted)return;
-oceanStarted=true;
-
-try{
-audioCtx=new(window.AudioContext||window.webkitAudioContext)();
-
-const buffer=audioCtx.createBuffer(1,audioCtx.sampleRate*4,audioCtx.sampleRate);
-const data=buffer.getChannelData(0);
-
-for(let i=0;i<data.length;i++){
-data[i]=(Math.random()*2-1)*0.12;
-}
-
-const source=audioCtx.createBufferSource();
-source.buffer=buffer;
-source.loop=true;
-
-const filter=audioCtx.createBiquadFilter();
-filter.type="lowpass";
-filter.frequency.value=700;
-
-const gain=audioCtx.createGain();
-gain.gain.value=.045;
-
-source.connect(filter);
-filter.connect(gain);
-gain.connect(audioCtx.destination);
-source.start();
-}catch(e){}
-}
-
-/* MUSIC BUTTON */
-document.getElementById("music").onclick=()=>{
-startOcean();
-if(audioCtx&&audioCtx.state==="suspended")audioCtx.resume();
-};
 </script>
 
 </body>
