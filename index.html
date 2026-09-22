@@ -3,123 +3,1063 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+
 <title>Khloud & Mohamed — Wedding Invitation</title>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+
+<style>
+:root{
+--blue0:#F5FCFE;
+--blue1:#EAF8FC;
+--blue2:#D5EFF6;
+--blue3:#B9E3EE;
+--blue4:#92CEDD;
+--blue5:#68B6CA;
+--blue6:#479CAF;
+--blue7:#28778D;
+--blue8:#18596C;
+--ink:#194F60;
+--white:#fff;
+}
+
+*{box-sizing:border-box}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+margin:0;
+background:var(--blue0);
+color:var(--ink);
+font-family:Montserrat,Arial,sans-serif;
+font-weight:300;
+}
+
+.opening{
+position:fixed;
+inset:0;
+z-index:100;
+background:#DFF3F7;
+display:grid;
+place-items:center;
+transition:opacity 1s ease,visibility 1s ease;
+}
+
+.opening.closed{
+opacity:0;
+visibility:hidden;
+pointer-events:none;
+}
+
+.opening-hit{
+width:100%;
+height:100%;
+padding:0;
+border:0;
+background:none;
+cursor:pointer;
+display:block;
+}
+
+.opening-hit img{
+width:100%;
+height:100%;
+object-fit:cover;
+object-position:center;
+display:block;
+transition:
+transform 1.15s cubic-bezier(.2,.7,.2,1),
+filter .9s ease;
+}
+
+.opening.opening-out .opening-hit img{
+transform:scale(1.07);
+filter:brightness(1.08);
+}
+
+.invitation{
+opacity:0;
+transition:opacity .9s ease;
+}
+
+.invitation.ready{
+opacity:1;
+}
+
+.hero,
+.countdown-section,
+.finale{
+position:relative;
+min-height:100svh;
+overflow:hidden;
+}
+
+.hero-video,
+.section-video{
+position:absolute;
+inset:0;
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+.hero-shade{
+position:absolute;
+inset:0;
+background:
+linear-gradient(
+180deg,
+rgba(10,67,82,.18),
+rgba(10,67,82,.04) 45%,
+rgba(5,35,48,.48)
+);
+}
+
+.hero-content,
+.finale-content,
+.countdown-content{
+position:absolute;
+inset:0;
+z-index:2;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+color:#fff;
+padding:24px;
+}
+
+.eyebrow{
+font-size:10px;
+letter-spacing:4px;
+}
+
+.hero h1,
+.details-section h2,
+.memories h2,
+.dress h2,
+.venue h2,
+.finale h2{
+font-family:"Cormorant Garamond",serif;
+font-weight:500;
+line-height:.9;
+margin:18px 0;
+font-size:clamp(58px,13vw,112px);
+}
+
+em{
+font-weight:400;
+color:#DFFAFF;
+}
+
+.hero h1 i{
+font-weight:400;
+color:#E6FBFF;
+}
+
+.script{
+font-family:"Cormorant Garamond",serif;
+font-size:25px;
+}
+
+.hero-date{
+margin-top:22px;
+font-size:10px;
+letter-spacing:3px;
+}
+
+.hero-place{
+margin-top:10px;
+font-size:9px;
+letter-spacing:2px;
+}
+
+.scroll-hint{
+position:absolute;
+bottom:30px;
+font-size:9px;
+letter-spacing:3px;
+}
+
+.scroll-hint span{
+display:block;
+font-size:18px;
+margin-top:7px;
+}
+
+.details-section{
+min-height:90svh;
+padding:14vh 7vw;
+display:flex;
+flex-direction:column;
+align-items:center;
+text-align:center;
+}
+
+.blue-light{
+background:linear-gradient(
+180deg,
+var(--blue0),
+var(--blue1)
+);
+}
+
+.blue-text{
+color:var(--blue7);
+}
+
+.body-copy{
+max-width:600px;
+line-height:1.9;
+color:#507884;
+}
+
+.details-grid{
+width:min(1000px,100%);
+display:grid;
+grid-template-columns:repeat(3,1fr);
+margin-top:65px;
+border-top:1px solid #28778d40;
+border-bottom:1px solid #28778d40;
+}
+
+.details-grid div{
+padding:28px 16px;
+border-right:1px solid #28778d30;
+}
+
+.details-grid div:last-child{
+border:0;
+}
+
+.details-grid span,
+.details-grid small{
+display:block;
+font-size:8px;
+letter-spacing:3px;
+}
+
+.details-grid strong{
+display:block;
+font-family:"Cormorant Garamond",serif;
+font-size:27px;
+font-weight:500;
+margin:9px 0;
+}
+
+.countdown-section{
+min-height:72svh;
+}
+
+.section-shade{
+position:absolute;
+inset:0;
+background:
+linear-gradient(
+180deg,
+rgba(8,65,79,.18),
+rgba(5,45,57,.55)
+);
+}
+
+.countdown-content>p{
+font-size:9px;
+letter-spacing:4px;
+}
+
+.countdown{
+display:flex;
+gap:clamp(18px,5vw,55px);
+margin-top:25px;
+}
+
+.countdown div{
+display:flex;
+flex-direction:column;
+}
+
+.countdown b{
+font-family:"Cormorant Garamond",serif;
+font-size:clamp(45px,9vw,80px);
+font-weight:500;
+}
+
+.countdown span{
+font-size:8px;
+letter-spacing:3px;
+}
+
+.memories{
+padding:14vh 6vw;
+text-align:center;
+background:
+linear-gradient(
+180deg,
+var(--blue1),
+var(--blue2)
+);
+}
+
+.gallery{
+max-width:1050px;
+margin:60px auto 0;
+display:grid;
+grid-template-columns:repeat(12,1fr);
+gap:24px;
+align-items:start;
+}
+
+.gallery figure{
+background:#fff;
+padding:10px 10px 32px;
+box-shadow:0 12px 35px rgba(23,75,88,.12);
+margin:0;
+transform:rotate(var(--r));
+transition:.4s;
+}
+
+.gallery figure:nth-child(1){
+grid-column:1/5;
+--r:-2deg;
+}
+
+.gallery figure:nth-child(2){
+grid-column:5/9;
+--r:1.5deg;
+}
+
+.gallery figure:nth-child(3){
+grid-column:9/13;
+--r:-1deg;
+}
+
+.gallery figure:nth-child(4){
+grid-column:2/6;
+--r:2deg;
+}
+
+.gallery figure:nth-child(5){
+grid-column:6/10;
+--r:-1.5deg;
+}
+
+.gallery figure:nth-child(6){
+grid-column:10/13;
+--r:1deg;
+}
+
+.gallery img{
+width:100%;
+aspect-ratio:4/5;
+object-fit:cover;
+display:block;
+}
+
+.gallery figcaption{
+font-family:"Cormorant Garamond",serif;
+font-size:18px;
+margin-top:10px;
+color:#315C63;
+}
+
+.dress{
+padding:14vh 7vw;
+text-align:center;
+color:#fff;
+background:
+linear-gradient(
+180deg,
+var(--blue7),
+var(--blue8)
+);
+}
+
+.dress h2{
+font-size:clamp(52px,10vw,88px);
+}
+
+.light{
+color:#E8FBFF;
+margin:0 auto;
+}
+
+.swatches{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:15px;
+max-width:700px;
+margin:55px auto;
+}
+
+.swatches div{
+padding:10px;
+background:rgba(255,255,255,.08);
+border:1px solid rgba(255,255,255,.25);
+border-radius:3px;
+}
+
+.swatches i{
+display:block;
+height:70px;
+margin-bottom:10px;
+}
+
+.swatches span{
+font-size:8px;
+letter-spacing:2px;
+}
+
+.men-title{
+margin-top:20px;
+font-size:9px;
+letter-spacing:3px;
+}
+
+.men-code{
+display:flex;
+justify-content:center;
+align-items:center;
+gap:14px;
+flex-wrap:wrap;
+margin-top:14px;
+font-size:10px;
+letter-spacing:3px;
+}
+
+.men-code b{
+font-weight:400;
+padding:13px 17px;
+background:#fff;
+color:var(--blue8);
+border:1px solid rgba(255,255,255,.7);
+}
+
+.men-code .baby{
+background:var(--blue3);
+color:var(--blue8);
+border-color:var(--blue3);
+}
+
+.venue{
+min-height:90svh;
+display:grid;
+place-items:center;
+padding:8vw;
+background:
+linear-gradient(
+180deg,
+var(--blue2),
+var(--blue4)
+);
+}
+
+.venue-card{
+text-align:center;
+padding:60px 25px;
+max-width:700px;
+}
+
+.venue-name{
+font-size:12px;
+letter-spacing:5px;
+}
+
+.map-btn{
+display:inline-block;
+margin-top:20px;
+background:var(--blue8);
+color:#fff;
+text-decoration:none;
+padding:15px 24px;
+letter-spacing:2px;
+font-size:9px;
+}
+
+.finale{
+background:#0D5264;
+}
+
+.night-shade{
+position:absolute;
+inset:0;
+background:
+linear-gradient(
+180deg,
+rgba(2,24,36,.58),
+rgba(2,33,47,.7)
+);
+}
+
+.moon{
+position:absolute;
+width:70px;
+height:70px;
+border-radius:50%;
+background:#FFFBE4;
+right:12%;
+top:12%;
+box-shadow:0 0 45px rgba(255,255,220,.5);
+z-index:1;
+}
+
+.stars{
+position:absolute;
+inset:0;
+z-index:1;
+background-image:
+radial-gradient(#fff 1px,transparent 1px),
+radial-gradient(#fff 1px,transparent 1px);
+background-size:
+83px 83px,
+137px 137px;
+background-position:
+20px 40px,
+60px 10px;
+opacity:.5;
+}
+
+.finale h2{
+font-size:clamp(70px,14vw,125px);
+}
+
+.final-date{
+margin-top:25px;
+letter-spacing:5px;
+font-size:10px;
+}
+
+@media(max-width:700px){
+
+.details-grid{
+grid-template-columns:1fr;
+}
+
+.details-grid div{
+border-right:0;
+border-bottom:1px solid #28778d30;
+}
+
+.gallery{
+grid-template-columns:1fr 1fr;
+gap:14px;
+}
+
+.gallery figure{
+grid-column:auto!important;
+}
+
+.swatches{
+grid-template-columns:1fr 1fr;
+}
+
+.hero h1{
+font-size:65px;
+}
+
+.hero-place{
+max-width:310px;
+line-height:1.6;
+}
+
+.moon{
+width:55px;
+height:55px;
+}
+
+}
+</style>
 </head>
+
 <body>
 
-<!-- OPENING ENVELOPE -->
 <section class="opening" id="opening" aria-label="Open invitation">
-  <button class="opening-hit" id="openInvitation" aria-label="Open wedding invitation">
-    <img src="assets/opening.jpg" alt="Khloud and Mohamed wedding envelope">
-  </button>
+
+<button
+class="opening-hit"
+id="openInvitation"
+aria-label="Open wedding invitation">
+
+<img
+src="opening.jpg"
+alt="Khloud and Mohamed wedding envelope">
+
+</button>
+
 </section>
 
 <main id="invitation" class="invitation">
-  <!-- REAL OCEAN VIDEO: first scene after opening -->
-  <section class="hero" id="hero">
-    <video class="hero-video" autoplay muted loop playsinline preload="auto"
-      poster="assets/opening.jpg">
-      <source src="https://videos.pexels.com/video-files/13538373/13538373-uhd_3840_2160_60fps.mp4" type="video/mp4">
-    </video>
-    <div class="hero-shade"></div>
-    <div class="hero-content">
-      <p class="eyebrow">YOU ARE INVITED TO OUR WEDDING</p>
-      <h1>Khloud <i>&amp;</i> Mohamed</h1>
-      <p class="script">A day by the sea, a lifetime together.</p>
-      <div class="hero-date">14 OCTOBER 2026 · 5:00 PM</div>
-      <div class="hero-place">STEIGENBERGER HOTEL EL LESSAN · RAS EL BAR</div>
-      <div class="scroll-hint">SCROLL TO DISCOVER <span>↓</span></div>
-    </div>
-  </section>
 
-  <section class="details-section blue-light">
-    <p class="eyebrow blue-text">THE DAY</p>
-    <h2>Two hearts.<br><em>One beautiful beginning.</em></h2>
-    <p class="body-copy">We would love to have you with us as we celebrate the beginning of our forever.</p>
-    <div class="details-grid">
-      <div><span>DAY</span><strong>WEDNESDAY</strong><small>14 OCTOBER 2026</small></div>
-      <div><span>TIME</span><strong>5:00 PM</strong><small>ARRIVE &amp; CELEBRATE</small></div>
-      <div><span>VENUE</span><strong>STEIGENBERGER</strong><small>HOTEL EL LESSAN · RAS EL BAR</small></div>
-    </div>
-  </section>
+<section class="hero" id="hero">
 
-  <section class="countdown-section">
-    <video class="section-video" autoplay muted loop playsinline preload="metadata">
-      <source src="https://videos.pexels.com/video-files/13538373/13538373-uhd_3840_2160_60fps.mp4" type="video/mp4">
-    </video>
-    <div class="section-shade"></div>
-    <div class="countdown-content">
-      <p>COUNTING DOWN TO FOREVER</p>
-      <div class="countdown" id="countdown">
-        <div><b id="days">--</b><span>DAYS</span></div>
-        <div><b id="hours">--</b><span>HOURS</span></div>
-        <div><b id="mins">--</b><span>MINUTES</span></div>
-        <div><b id="secs">--</b><span>SECONDS</span></div>
-      </div>
-    </div>
-  </section>
+<video
+class="hero-video"
+autoplay
+muted
+loop
+playsinline
+preload="auto"
+poster="opening.jpg">
 
-  <section class="memories blue-pale">
-    <p class="eyebrow blue-text">OUR MOMENTS</p>
-    <h2>Little moments,<br><em>forever memories.</em></h2>
-    <div class="gallery">
-      <figure><img src="assets/photos/IMG_6600.jpeg"><figcaption>Us, always.</figcaption></figure>
-      <figure><img src="assets/photos/IMG_0476.jpeg"><figcaption>Wherever you are.</figcaption></figure>
-      <figure><img src="assets/photos/IMG_0806(1).jpeg"><figcaption>My favorite place.</figcaption></figure>
-      <figure><img src="assets/photos/IMG_0802(1).jpeg"><figcaption>Side by side.</figcaption></figure>
-      <figure><img src="assets/photos/IMG_0807(1).jpeg"><figcaption>Just us.</figcaption></figure>
-      <figure><img src="assets/photos/IMG_0803(1).jpeg"><figcaption>Always a little closer.</figcaption></figure>
-      <figure><img src="assets/photos/IMG_5169.jpeg"><figcaption>Our kind of magic.</figcaption></figure>
-      <figure><img src="assets/photos/IMG_5175.jpeg"><figcaption>And then, forever.</figcaption></figure>
-      <figure><img src="assets/photos/IMG_0804(1).jpeg"><figcaption>Every little moment.</figcaption></figure>
-      <figure><img src="assets/photos/IMG_0805(1).jpeg"><figcaption>Forever starts here.</figcaption></figure>
-    </div>
-  </section>
+<source
+src="https://videos.pexels.com/video-files/13538373/13538373-uhd_3840_2160_60fps.mp4"
+type="video/mp4">
 
-  <section class="dress blue-deep">
-    <p class="eyebrow">DRESS CODE</p>
-    <h2>Come dressed in<br><em>our shades of the sea.</em></h2>
-    <p class="body-copy light">Ladies may choose any of these ocean-inspired shades. Gentlemen: white &amp; baby blue.</p>
-    <div class="swatches">
-      <div><i style="background:#D1FFF2"></i><span>SEA FOAM</span></div>
-      <div><i style="background:#B2FFE6"></i><span>LAGOON</span></div>
-      <div><i style="background:#8DE0D5"></i><span>REEF WATER</span></div>
-      <div><i style="background:#67CFC3"></i><span>TIDAL POOL</span></div>
-      <div><i style="background:#46A3A9"></i><span>DEEP CURRENT</span></div>
-      <div><i style="background:#237782"></i><span>OCEAN FLOOR</span></div>
-    </div>
-    <div class="men-code"><span>GENTLEMEN</span><b>WHITE</b><i>+</i><b>BABY BLUE</b></div>
-  </section>
+</video>
 
-  <section class="venue blue-mid">
-    <div class="venue-card">
-      <p class="eyebrow blue-text">THE PLACE</p>
-      <h2>Meet us<br><em>by the sea.</em></h2>
-      <p class="venue-name">STEIGENBERGER HOTEL EL LESSAN</p>
-      <p class="body-copy">Ras El Bar · Damietta<br>14 October 2026 · 5:00 PM</p>
-      <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Steigenberger+Hotel+El+Lessan+Ras+El+Bar" target="_blank" rel="noopener">OPEN LOCATION ↗</a>
-    </div>
-  </section>
+<div class="hero-shade"></div>
 
-  <section class="finale">
-    <video class="hero-video" autoplay muted loop playsinline preload="metadata">
-      <source src="https://videos.pexels.com/video-files/13538373/13538373-uhd_3840_2160_60fps.mp4" type="video/mp4">
-    </video>
-    <div class="night-shade"></div>
-    <div class="moon"></div>
-    <div class="stars"></div>
-    <div class="finale-content">
-      <p class="eyebrow">UNTIL THEN…</p>
-      <h2>See you<br><em>by the sea.</em></h2>
-      <p>Khloud &amp; Mohamed</p>
-      <div class="final-date">14 · 10 · 2026</div>
-    </div>
-  </section>
+<div class="hero-content">
+
+<p class="eyebrow">
+YOU ARE INVITED TO OUR WEDDING
+</p>
+
+<h1>
+Khloud <i>&amp;</i> Mohamed
+</h1>
+
+<p class="script">
+A day by the sea, a lifetime together.
+</p>
+
+<div class="hero-date">
+14 OCTOBER 2026 · 5:00 PM
+</div>
+
+<div class="hero-place">
+STEIGENBERGER HOTEL EL LESSAN · RAS EL BAR
+</div>
+
+<div class="scroll-hint">
+SCROLL TO DISCOVER
+<span>↓</span>
+</div>
+
+</div>
+
+</section>
+
+
+<section class="details-section blue-light">
+
+<p class="eyebrow blue-text">
+THE DAY
+</p>
+
+<h2>
+Two hearts.<br>
+<em>One beautiful beginning.</em>
+</h2>
+
+<p class="body-copy">
+We would love to have you with us as we celebrate the beginning of our forever.
+</p>
+
+<div class="details-grid">
+
+<div>
+<span>DAY</span>
+<strong>WEDNESDAY</strong>
+<small>14 OCTOBER 2026</small>
+</div>
+
+<div>
+<span>TIME</span>
+<strong>5:00 PM</strong>
+<small>ARRIVE &amp; CELEBRATE</small>
+</div>
+
+<div>
+<span>VENUE</span>
+<strong>STEIGENBERGER</strong>
+<small>HOTEL EL LESSAN · RAS EL BAR</small>
+</div>
+
+</div>
+
+</section>
+
+
+<section class="countdown-section">
+
+<video
+class="section-video"
+autoplay
+muted
+loop
+playsinline
+preload="metadata">
+
+<source
+src="https://videos.pexels.com/video-files/13538373/13538373-uhd_3840_2160_60fps.mp4"
+type="video/mp4">
+
+</video>
+
+<div class="section-shade"></div>
+
+<div class="countdown-content">
+
+<p>
+COUNTING DOWN TO FOREVER
+</p>
+
+<div class="countdown" id="countdown">
+
+<div>
+<b id="days">--</b>
+<span>DAYS</span>
+</div>
+
+<div>
+<b id="hours">--</b>
+<span>HOURS</span>
+</div>
+
+<div>
+<b id="mins">--</b>
+<span>MINUTES</span>
+</div>
+
+<div>
+<b id="secs">--</b>
+<span>SECONDS</span>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="memories">
+
+<p class="eyebrow blue-text">
+OUR MOMENTS
+</p>
+
+<h2>
+Little moments,<br>
+<em>forever memories.</em>
+</h2>
+
+<div class="gallery">
+
+<figure>
+<img
+src="IMG_0802(1).jpeg"
+alt="Khloud and Mohamed">
+<figcaption>Us, always.</figcaption>
+</figure>
+
+<figure>
+<img
+src="IMG_0803(1).jpeg"
+alt="Khloud and Mohamed">
+<figcaption>Wherever you are.</figcaption>
+</figure>
+
+<figure>
+<img
+src="IMG_0804(1).jpeg"
+alt="Khloud and Mohamed">
+<figcaption>My favorite place.</figcaption>
+</figure>
+
+<figure>
+<img
+src="IMG_0805(1).jpeg"
+alt="Khloud and Mohamed">
+<figcaption>Side by side.</figcaption>
+</figure>
+
+<figure>
+<img
+src="IMG_0806(1).jpeg"
+alt="Khloud and Mohamed">
+<figcaption>Just us.</figcaption>
+</figure>
+
+<figure>
+<img
+src="IMG_0807(1).jpeg"
+alt="Khloud and Mohamed">
+<figcaption>Always a little closer.</figcaption>
+</figure>
+
+</div>
+
+</section>
+
+
+<section class="dress">
+
+<p class="eyebrow">
+DRESS CODE
+</p>
+
+<h2>
+Come dressed in<br>
+<em>our shades of the sea.</em>
+</h2>
+
+<p class="body-copy light">
+Ladies may choose any of these baby-blue ocean shades.
+Gentlemen: white &amp; baby blue.
+</p>
+
+<div class="swatches">
+
+<div>
+<i style="background:#EAF8FC"></i>
+<span>SEA FOAM</span>
+</div>
+
+<div>
+<i style="background:#D5EFF6"></i>
+<span>LAGOON</span>
+</div>
+
+<div>
+<i style="background:#B9E3EE"></i>
+<span>REEF WATER</span>
+</div>
+
+<div>
+<i style="background:#92CEDD"></i>
+<span>TIDAL POOL</span>
+</div>
+
+<div>
+<i style="background:#68B6CA"></i>
+<span>DEEP CURRENT</span>
+</div>
+
+<div>
+<i style="background:#479CAF"></i>
+<span>OCEAN FLOOR</span>
+</div>
+
+</div>
+
+<div class="men-title">
+GENTLEMEN
+</div>
+
+<div class="men-code">
+
+<b>WHITE</b>
+
+<span>+</span>
+
+<b class="baby">
+BABY BLUE
+</b>
+
+</div>
+
+</section>
+
+
+<section class="venue">
+
+<div class="venue-card">
+
+<p class="eyebrow blue-text">
+THE PLACE
+</p>
+
+<h2>
+Meet us<br>
+<em>by the sea.</em>
+</h2>
+
+<p class="venue-name">
+STEIGENBERGER HOTEL EL LESSAN
+</p>
+
+<p class="body-copy">
+Ras El Bar · Damietta<br>
+14 October 2026 · 5:00 PM
+</p>
+
+<a
+class="map-btn"
+href="https://www.google.com/maps/search/?api=1&query=Steigenberger+Hotel+El+Lessan+Ras+El+Bar"
+target="_blank"
+rel="noopener">
+
+OPEN LOCATION ↗
+
+</a>
+
+</div>
+
+</section>
+
+
+<section class="finale">
+
+<video
+class="hero-video"
+autoplay
+muted
+loop
+playsinline
+preload="metadata">
+
+<source
+src="https://videos.pexels.com/video-files/13538373/13538373-uhd_3840_2160_60fps.mp4"
+type="video/mp4">
+
+</video>
+
+<div class="night-shade"></div>
+
+<div class="moon"></div>
+
+<div class="stars"></div>
+
+<div class="finale-content">
+
+<p class="eyebrow">
+UNTIL THEN…
+</p>
+
+<h2>
+See you<br>
+<em>by the sea.</em>
+</h2>
+
+<p>
+Khloud &amp; Mohamed
+</p>
+
+<div class="final-date">
+14 · 10 · 2026
+</div>
+
+</div>
+
+</section>
+
 </main>
 
-<script src="script.js"></script>
+
+<script>
+
+const opening =
+document.getElementById('opening');
+
+const button =
+document.getElementById('openInvitation');
+
+const invitation =
+document.getElementById('invitation');
+
+
+button.addEventListener('click',()=>{
+
+opening.classList.add('opening-out');
+
+invitation.classList.add('ready');
+
+/* مهم:
+   أول ما الظرف يتفتح نرجع لأول نقطة
+   وهي فيديو البحر مباشرة */
+
+window.scrollTo({
+top:0,
+left:0,
+behavior:'instant'
+});
+
+setTimeout(()=>{
+opening.classList.add('closed');
+},850);
+
+
+/* تشغيل فيديو البحر بعد ضغطة المستخدم */
+
+document
+.querySelectorAll('video')
+.forEach(video=>{
+video.play().catch(()=>{});
+});
+
+});
+
+
+const target =
+new Date(
+'2026-10-14T17:00:00+03:00'
+).getTime();
+
+
+function tick(){
+
+let d =
+Math.max(
+0,
+target-Date.now()
+);
+
+const days =
+Math.floor(
+d/86400000
+);
+
+d%=86400000;
+
+const hours =
+Math.floor(
+d/3600000
+);
+
+d%=3600000;
+
+const mins =
+Math.floor(
+d/60000
+);
+
+d%=60000;
+
+const secs =
+Math.floor(
+d/1000
+);
+
+
+document.getElementById('days')
+.textContent =
+String(days).padStart(2,'0');
+
+document.getElementById('hours')
+.textContent =
+String(hours).padStart(2,'0');
+
+document.getElementById('mins')
+.textContent =
+String(mins).padStart(2,'0');
+
+document.getElementById('secs')
+.textContent =
+String(secs).padStart(2,'0');
+
+}
+
+
+tick();
+
+setInterval(tick,1000);
+
+</script>
+
 </body>
 </html>
