@@ -715,6 +715,10 @@ OPENING ENVELOPE
   <button class="opening-hit" id="openInvitation" aria-label="Open wedding invitation"></button>
 </section>
 
+<audio id="weddingMusic" preload="auto" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
 <main
 id="invitation"
 class="invitation">
@@ -1195,8 +1199,10 @@ button.addEventListener("click",()=>{
   opening.classList.add("opening-out");
 
   const music = document.getElementById("weddingMusic");
-  music.volume = 0.55;
-  music.play().catch(()=>{});
+  if (music) {
+    music.volume = 0.55;
+    music.play().catch(()=>{});
+  }
 
   window.scrollTo({top:0,left:0,behavior:"instant"});
 
